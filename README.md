@@ -42,7 +42,7 @@ ReactDOM.render(
 
 载入新的STL文件,<Loader />将会刷新并且载入新的文件
 ```
-<Loader url="this.state.url"
+<Loader url={this.state.url}
         width={500}
         height={500}>
 </Loader>
