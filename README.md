@@ -1,4 +1,6 @@
 # React-STLLoader-Compnent
+[![NPM](https://nodei.co/npm/react-stlloader-component.png)](https://nodei.co/npm/react-stlloader-component/)
+
 把threejs的STLLoader封装成React组件
 
 A React Compnent with using THREE.STLLoader 
@@ -12,11 +14,12 @@ A React Compnent with using THREE.STLLoader
 
 ## 安装
 
-`npm install `
+`npm install react-stlloader-component`
 
 ## 使用
-
-` `  
+导入
+`const loader = require('react-stlloader-component') `  
+组件使用
 ` `
 
 ` `

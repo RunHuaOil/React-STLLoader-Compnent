@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as THREE from 'three';
 
-const stlLoader = require('../src/STL-Loader')(THREE);
+const stlLoader = require('./STL-Loader')(THREE);
 const TrackballControls = require('./TrackballControls');
 
 
