@@ -17,10 +17,41 @@ A React Compnent with using THREE.STLLoader
 `npm install react-stlloader-component`
 
 ## 使用
-导入
-`const loader = require('react-stlloader-component') `  
-组件使用
-` `
 
-` `
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Loader from 'react-stlloader-component';
+
+class Example extends React.Component {
+
+    render() {
+        return (
+            <Loader url="你需要填写的 xxx.stl 文件URL"
+                    width={500}
+                    height={500}>
+            </Loader>
+        );
+    }
+}
+
+ReactDOM.render(
+    <Example/>, document.getElementById('root')
+); 
+```
+
+载入新的STL文件,<Loader />将会刷新并且载入新的文件
+```
+<Loader url="this.state.url"
+        width={500}
+        height={500}>
+</Loader>
+
+handleChangeSTL() {
+    this.setState = {
+        url: // 新的 xxx.stl  URL
+    }
+}
+```
+
 Good luck to you!

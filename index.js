@@ -41,8 +41,7 @@ class STLLoader extends React.Component {
 
     render() {
         return (
-            <div id={"three"}>
-            </div>
+            React.createElement('div', {id: "three"})
         );
     }
 
@@ -106,4 +105,4 @@ function loadSTL(scene, url) {
     });
 }
 
-module.exports = STLLoader;
+export default STLLoader;
