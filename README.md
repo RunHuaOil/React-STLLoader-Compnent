@@ -27,7 +27,7 @@ class Example extends React.Component {
 
     render() {
         return (
-            <Loader url="你需要填写的 xxx.stl 文件URL"
+            <Loader url={你需要填写的 xxx.stl 文件URL}
                     width={500}
                     height={500}>
             </Loader>
