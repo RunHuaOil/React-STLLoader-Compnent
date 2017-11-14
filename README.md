@@ -48,9 +48,9 @@ ReactDOM.render(
 </Loader>
 
 handleChangeSTL() {
-    this.setState = {
-        url: // 新的 xxx.stl  URL
-    }
+    this.setState(
+        {url: // 新的 xxx.stl  URL}
+    );
 }
 ```
 

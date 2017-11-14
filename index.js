@@ -9,8 +9,11 @@ const TrackballControls = require('./TrackballControls');
 class STLLoader extends React.Component {
 
     componentDidMount() {
-        let container = document.getElementById('three');
-        container.appendChild(this.three.renderer.domElement);
+        this.messageNative = document.getElementById('message');
+        this.container = document.getElementById('three');
+
+        loadSTL(this.three.scene, this.props.url, this.messageNative)
+        this.container.appendChild(this.three.renderer.domElement);
 
         // 循环渲染
         this.timerID = setInterval(() => {
@@ -21,27 +24,39 @@ class STLLoader extends React.Component {
 
     componentDidUpdate() {
         clearInterval(this.timerID);
-        loadSTL(this.three.scene, this.props.url);
-        let container = document.getElementById('three');
-        container.innerHTML = "";
-        container.appendChild(this.three.renderer.domElement);
+        this.messageNative.style.display = "block";
+
+        loadSTL(this.three.scene, this.props.url, this.messageNative);
+
+        this.container.appendChild(this.three.renderer.domElement);
 
         // 循环渲染
         this.timerID = setInterval(() => {
             this.three.controls.update();
             this.three.renderer.render(this.three.scene, this.three.camera);
-        }, 10);
+        }, 17);
     }
 
     constructor(props) {
         super(props);
         this.three = init(this.props.width, this.props.height);
-        loadSTL(this.three.scene, this.props.url)
+        this.msg = React.createElement('h1', {
+            id: "message",
+            style: {
+                color: "#fff",
+                display: "block",
+                textAlign: "center",
+                position: "absolute",
+                zIndex: 100,
+                width: this.props.width,
+                top: "10px",
+            }
+        }, '');
     }
 
     render() {
         return (
-            React.createElement('div', {id: "three"})
+            React.createElement('div', {id: "three"}, this.msg)
         );
     }
 
@@ -89,7 +104,7 @@ function init(width, height) {
     return {renderer: renderer, controls: controls, camera: camera, scene: scene};
 }
 
-function loadSTL(scene, url) {
+function loadSTL(scene, url, msg) {
     let selectedObject = scene.getObjectByName("meshName");
     if (selectedObject !== undefined)
         scene.remove(selectedObject);
@@ -102,6 +117,10 @@ function loadSTL(scene, url) {
         // 场景加入物体
         mesh.name = "meshName";
         scene.add(mesh);
+
+        msg.style.display = "none";
+    }, function (event) {
+        msg.innerText = `已加载: ${(event.loaded / event.total * 100).toFixed(0)} %`;
     });
 }
 
