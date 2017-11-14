@@ -1,6 +1,6 @@
 {
   "name": "react-stlloader-component",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "把threejs的STLLoader封装成React组件",
   "main": "index.js",
   "dependencies": {
